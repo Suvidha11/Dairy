@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block title %} Home {% endblock title %}
+{% block body %}
+{% include 'nav.html'%}
+<p>{{comments.count_commnet}}</p>
+
+<!-- card start -->
+<div class="container m-5 ">
+ 
+    <div class="card  p-3"  >
+        <h4 class="card-title">{{disp.title}}</h4>
+       
+        <h6><span>Posted by: <i>{{disp.user}}  </i></span></h6>
+      <div class="d-flex ">
+        <img src="{{disp.image.url}}" class="card-img-top" alt="..." style="height: 200px ; width:200px;">
+        <p class="card-text p-2">{{disp.desc}}</p>
+      </div>
+
+
+      <form method="post">
+        {% csrf_token %}
+      <div class="row mt-2">
+        <div class="col-md-8">
+          <a class="nav-link" ><input class="form-control" name="comments" placeholder="Write something here....."></a>
+        </div>
+        <div class="col-auto">
+          <button class="btn btn-primary"> Post</button>
+        </div>
+      </div> 
+    </div>
+  </form>
+</div>
+  <div class="container m-5">
+    <h4>Total commnets is {{count}}</h4>
+    <br>
+    {% for comnt in view_cmnt %}
+    <div class="d-flex flex-column mb-3">
+      <div class="p-2"><b><i>{{comnt.comment_by}}:</i></b></div>
+      <div class="p-2">{{comnt.comment}}</</div>
+    </div>
+    {% endfor %}
+  </div>
+
+
+
+
+
+
+
+{% endblock body %}

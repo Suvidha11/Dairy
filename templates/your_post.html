@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %} Home {% endblock title %}
+{% block body %}
+{% include 'nav.html'%}
+
+<!-- card start -->
+<div class="container mt-2">
+  <div class="row align-items-start ">
+    {% for i in disp %}
+    <div class="card col-md-4 my-2 mx-2 p-1" style="width: 18rem;">
+      <img src="{{i.image.url}}" class="card-img-top" alt="..." height="150px">
+      <div class="card-body">
+        <h5 class="card-title">{{i.title}}</h5>
+        <p class="card-text">{{i.desc|slice:":25" }}</p>
+       <div class="d-flex  justify-content-around">
+        <a href="delete/{{i.post_id}}" class="btn btn-danger">Delete</a>
+        <a href="Update/{{i.post_id}}" class="btn btn-primary">Update</a>
+        <a href="display/{{i.post_id}}" class="btn btn-primary">view</a>
+      </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+
+
+
+{% endblock body %}

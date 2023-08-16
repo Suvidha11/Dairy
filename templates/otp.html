@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %} login {% endblock title %}
+
+{% block body %} 
+<div class="rounded container shadow-lg  bg-body rounded mt-5"style="width: 500px; padding: 20px 18px;">
+  <h1 class="text-center">verify OTP</h1>
+  <hr>
+
+  <form action="" method="post">
+      {% csrf_token %}
+      {% include "alert.html" %}
+      <div class="row">
+          <div class="col">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-control" value="{{request.session.email}}" name="Email" required>
+      </div>
+    <div class="row">
+      <div class="col">
+          <label for="exampleFormControlInput1" class="form-label">OTP</label>
+          <input type="text" class="form-control" name="otp"
+              id="exampleFormControlInput1"  required>
+      </div>
+   <p class="text-center mt-1">Not have account?<a href="/">SignUp</a> </p>
+   <div class="d-grid gap-2 mt-2">
+      <button class="btn btn-primary" type="submit">submit</button>
+    </div>
+  </form>
+</div>
+{% endblock body %}

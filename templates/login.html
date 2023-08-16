@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %} login {% endblock title %}
+
+{% block body %} 
+<div class="rounded container shadow-lg  bg-body rounded mt-5"" style="width: 500px; padding: 20px 18px;">
+  <h1 class="text-center">Log in</h1>
+  <hr>
+
+  <form action="user_login" method="post">
+      {% csrf_token %}
+      <div class="row">
+          <div class="col">
+          <label class="form-label">username</label>
+          <input type="text" class="form-control" name="username" required>
+      </div>
+    <div class="row">
+      <div class="col">
+          <label for="exampleFormControlInput1" class="form-label">password</label>
+          <input type="password" class="form-control" name="password"
+              id="exampleFormControlInput1"  required>
+      </div>
+   <p class="text-center mt-1">Not have account?<a href="/">SignUp</a> </p>
+   <div class="d-grid gap-2 mt-2">
+      <button class="btn btn-primary" type="submit">LogIn</button>
+    </div>
+  </form>
+</div>
+{% endblock body %}
